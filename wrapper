@@ -2,6 +2,8 @@
 
 case $1 in
 	auto)
+		repo init -b $2 -u $3
+		repo sync -c -j$4
 		lunch $2
 		m -j$3
 		;;

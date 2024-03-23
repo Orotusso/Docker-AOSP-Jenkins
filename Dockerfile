@@ -24,6 +24,4 @@ WORKDIR /aosp
 ENV OUT_DIR="/aosp_out"
 ADD wrapper /aosp/
 RUN chmod 755 wrapper
-RUN repo init -b $AOSP_BRANCH -u $AOSP_URL
-RUN repo sync -c -j$THREADS
-ENTRYPOINT ["./wrapper", "auto", "$LUNCH_TARGET", "$THREADS"]
+ENTRYPOINT ["/bin/bash"]
