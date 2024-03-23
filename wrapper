@@ -1,0 +1,32 @@
+#!/bin/bash
+
+case $1 in
+	auto)
+		lunch $2
+		m -j$3
+		;;
+	
+	init)
+		repo init -b $2 -u $3
+		repo sync -c -j$4
+		;;
+	
+	configure)
+		lunch $2
+		;;
+	
+	build)
+		if [ -n $2 ]; then m -j$2; else m; fi
+		;;
+	
+	*)
+		echo <<EOF
+You need to specify an action!
+Available actions are: auto, init, configure, build
+auto: wrapper auto
+init: wrapper init {AOSP_BRANCH) {AOSP_REPO_URL} {SYNC_THREADS}
+configure: wrapper configure {LUNCH_TARGET}
+build: wrapper build [BUILD_THREADS]
+EOF
+		;;
+esac
