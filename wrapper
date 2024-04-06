@@ -10,6 +10,8 @@ case $1 in
 		;;
 	
 	init)
+		git config --global user.name "Automated Access"
+		git config --global user.email "iamateapot@example.com"
 		repo init -b $2 -u $3
 		repo sync -c -j$4
 		source build/envsetup.sh
