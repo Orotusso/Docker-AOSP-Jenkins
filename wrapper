@@ -4,6 +4,7 @@ case $1 in
 	auto)
 		repo init -b $2 -u $3
 		repo sync -c -j$4
+		source build/envsetup.sh
 		lunch $2
 		m -j$3
 		;;
@@ -11,6 +12,7 @@ case $1 in
 	init)
 		repo init -b $2 -u $3
 		repo sync -c -j$4
+		source build/envsetup.sh
 		;;
 	
 	configure)
